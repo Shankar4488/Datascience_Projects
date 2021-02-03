@@ -8,6 +8,8 @@ DJANGO_ENVIRONMENT_HAS_BEEN_SETUP = False
 
 
 def setup_django_for_airflow(path_to_settings_py: str):
+    global DJANGO_ENVIRONMENT_HAS_BEEN_SETUP
+
     if DJANGO_ENVIRONMENT_HAS_BEEN_SETUP:
         return
 
