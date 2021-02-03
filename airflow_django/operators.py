@@ -1,7 +1,7 @@
 import os
 import sys
 
-from airflow.operators.python_operator import PythonOperator
+from airflow.operators.python import PythonOperator
 
 
 DJANGO_ENVIRONMENT_HAS_BEEN_SETUP = False
@@ -14,7 +14,7 @@ def setup_django_for_airflow(path_to_settings_py: str):
         return
 
     base_directory = os.path.dirname(path_to_settings_py)
-    project_name = os.path.basename(base_directory)
+    project_name = os.path.basename(path_to_settings_py)
 
     # Add Django project root to path
     sys.path.append(base_directory)
