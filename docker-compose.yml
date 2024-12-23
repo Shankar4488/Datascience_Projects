@@ -1,0 +1,38 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      - POSTGRES_DB=${APPLICATION_DB_NAME}
+      - POSTGRES_USER=${APPLICATION_DB_USER}
+      - POSTGRES_PASSWORD=${APPLICATION_DB_PASSWORD}
+    volumes:
+      - postgres-db-data:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+
+  saas:
+    image: postgres:16
+    environment:
+      - POSTGRES_DB=${SAAS_WAREHOUSE_DB_NAME}
+      - POSTGRES_USER=${SAAS_WAREHOUSE_DB_USER}
+      - POSTGRES_PASSWORD=${SAAS_WAREHOUSE_DB_PASSWORD}
+    volumes:
+      - postgres-saas-data:/var/lib/postgresql/data
+    ports:
+      - '5433:5432'
+
+  lake:
+    image: postgres:16
+    environment:
+      - POSTGRES_DB=${LAkE_WAREHOUSE_DB_NAME}
+      - POSTGRES_USER=${LAKE_WAREHOUSE_DB_USER}
+      - POSTGRES_PASSWORD=${LAKE_WAREHOUSE_DB_PASSWORD}
+    volumes:
+      - postgres-saas-data:/var/lib/postgresql/data
+    ports:
+      - '5433:5432'
+
+volumes:
+  media:
+  postgres-db-data:
+  postgres-saas-data:
